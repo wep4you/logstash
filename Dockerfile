@@ -44,7 +44,7 @@ ADD pipeline/default.conf pipeline/logstash.conf
 RUN chown --recursive logstash:root config/ pipeline/
 
 # Ensure Logstash gets the correct locale by default.
-ENV LANG=${locale} LC_ALL=${locale}
+#ENV LANG=${locale} LC_ALL=${locale}
 
 # Place the startup wrapper script.
 ADD bin/docker-entrypoint /usr/local/bin/
@@ -53,6 +53,7 @@ RUN chmod 0755 /usr/local/bin/docker-entrypoint
 USER 1000
 
 ADD env2yaml/env2yaml /usr/local/bin/
+RUN chmod 0755 /usr/local/bin/env2yaml
 
 EXPOSE 9600 5044
 
