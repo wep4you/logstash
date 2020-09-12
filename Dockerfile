@@ -14,7 +14,7 @@ RUN apt-get update \
     && apt-get install -y procps findutils tar gzip openjdk-11-jre curl ca-certificates ca-certificates-java \
     && rm -rf /var/lib/apt/lists/*
 
-# Provide a non-root user to run the process.
+# Provide a non-root user to run the process. 
 RUN groupadd --gid 1000 logstash && \
     adduser --uid 1000 --gid 1000 \
       --home /usr/share/logstash --no-create-home \
