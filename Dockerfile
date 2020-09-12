@@ -52,8 +52,6 @@ RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
 USER 1000
 
-ADD env2yaml/env2yaml /usr/local/bin/
-
 EXPOSE 9600 5044
 
 LABEL  org.label-schema.schema-version="1.0" \
@@ -71,5 +69,4 @@ LABEL  org.label-schema.schema-version="1.0" \
   org.label-schema.build-date=${BUILD_DATE} \
   org.opencontainers.image.created=${BUILD_DATE}
 
-#ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
