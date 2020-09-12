@@ -50,10 +50,9 @@ RUN chown --recursive logstash:root config/ pipeline/
 ADD bin/docker-entrypoint /usr/local/bin/
 RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
-ADD env2yaml/env2yaml /usr/local/bin/
-RUN chown logstash:root /usr/local/bin/env2yaml
-
 USER 1000
+
+ADD env2yaml/env2yaml /usr/local/bin/
 
 EXPOSE 9600 5044
 
@@ -72,4 +71,5 @@ LABEL  org.label-schema.schema-version="1.0" \
   org.label-schema.build-date=${BUILD_DATE} \
   org.opencontainers.image.created=${BUILD_DATE}
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
+#ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
+ENTRYPOINT ["/bin/bash"]
