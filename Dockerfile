@@ -1,24 +1,27 @@
 ARG ARCH=
-ARG license='Apache 2.0'
-ARG elastic_version='7.9.1'
-ARG tarball='logstash-oss-${elastic_version}.tar.gz' 
-ARG base_image='debian:buster-slim'
-ARG locale='de_AT.UTF-8'
+ARG BUILD_DATE=
 
-FROM ${ARCH}${base_image}
+FROM ${ARCH}debian:buster-slim
+
+ENV elastic_version='7.9.1'
+ENV tarball='logstash-oss-'${elastic_version}'.tar.gz'
+ENV license='Apache 2.0'
+ENV locale='de_AT.UTF-8'
+
+RUN mkdir -p /usr/share/man/man1
 
 RUN apt-get update \
-    && apt-get install -y procps findutils tar gzip java-11-openjdk-devel which \
+    && apt-get install -y procps findutils tar gzip openjdk-11-jre curl ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Provide a non-root user to run the process.
 RUN groupadd --gid 1000 logstash && \
     adduser --uid 1000 --gid 1000 \
-      --home-dir /usr/share/logstash --no-create-home \
+      --home /usr/share/logstash --no-create-home \
       logstash
 
 # Add Logstash itself.
-RUN curl -Lo - https://artifacts.elastic.co/downloads/logstash/${tarball} | \
+RUN curl -k -Lo - https://artifacts.elastic.co/downloads/logstash/${tarball} | \
     tar zxf - -C /usr/share && \
     mv /usr/share/logstash-${elastic_version} /usr/share/logstash && \
     chown --recursive logstash:logstash /usr/share/logstash/ && \
@@ -65,7 +68,7 @@ LABEL  org.label-schema.schema-version="1.0" \
   license="${license}" \
   org.label-schema.license="${license}" \
   org.opencontainers.image.licenses="${license}" \
-  org.label-schema.build-date={{ created_date }} \
-  org.opencontainers.image.created={{ created_date }}
+  org.label-schema.build-date=${BUILD_DATE} \
+  org.opencontainers.image.created=${BUILD_DATE}
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
