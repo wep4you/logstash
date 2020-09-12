@@ -11,7 +11,7 @@ ENV locale='de_AT.UTF-8'
 RUN mkdir -p /usr/share/man/man1
 
 RUN apt-get update \
-    && apt-get install -y procps findutils tar gzip openjdk-11-jre curl ca-certificates \
+    && apt-get install -y procps findutils tar gzip openjdk-11-jre curl ca-certificates ca-certificates-java \
     && rm -rf /var/lib/apt/lists/*
 
 # Provide a non-root user to run the process.
