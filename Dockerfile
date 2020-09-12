@@ -50,10 +50,10 @@ RUN chown --recursive logstash:root config/ pipeline/
 ADD bin/docker-entrypoint /usr/local/bin/
 RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
-USER 1000
-
 ADD env2yaml/env2yaml /usr/local/bin/
-RUN chmod 0755 /usr/local/bin/env2yaml
+RUN chown logstash:root /usr/local/bin/env2yaml
+
+USER 1000
 
 EXPOSE 9600 5044
 
