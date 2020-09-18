@@ -41,3 +41,7 @@ Alternatively, a single file can be mounted:
 
 Bind-mounted configuration files will retain the same permissions and ownership within the container that they have on the host system. Be sure to set permissions such that the files will be readable and, ideally, not writeable by the container’s logstash user (UID 1000).
 
+## Links
+
+Actual and Pre-Built Beats for File-Beat and Metric-Beat also for ARM and ARM64: 
+* https://github.com/mnorrsken/beats
