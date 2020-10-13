@@ -1,3 +1,7 @@
+* ![Master](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=master)
+* ![v7.9.2](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=v7.9.1)
+* ![v7.9.1](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=v7.9.1)
+
 # Elastic Logstash-OSS
 Multiarch Docker File for Elastics Logstash Based on the official Docker Repo https://github.com/elastic/logstash
 Base Image is Buster:Slim, automatic build with Docker-Hub Pipeline for linux/amd64, linux/arm/v7, linux/arm64/v8,linux/386
