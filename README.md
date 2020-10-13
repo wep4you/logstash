@@ -1,5 +1,5 @@
 * Master ![buildx](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=master)
-* v7.9.2 ![buildx](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=v7.9.1)
+* v7.9.2 ![buildx](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=v7.9.2)
 * v7.9.1 ![buildx](https://github.com/wep4you/logstash/workflows/buildx/badge.svg?branch=v7.9.1)
 
 # Elastic Logstash-OSS
